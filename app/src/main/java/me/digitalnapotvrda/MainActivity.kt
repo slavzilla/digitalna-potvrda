@@ -44,20 +44,5 @@ class MainActivity : AppCompatActivity() {
         }
 
         navController.graph = navGraph
-
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.scanFragment -> {
-
-                }
-                R.id.qrCodeFragment -> {
-
-                }
-                else -> {
-                }
-            }
-        }
-
-
     }
 }

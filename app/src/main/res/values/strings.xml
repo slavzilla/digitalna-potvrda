@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Digitalna Potvrda</string>
+    <string name="scan_title">Skenirajte QR kod sa Vaše potvrde</string>
+    <string name="invalid_qr_code">Neispravan QR kod</string>
 </resources>

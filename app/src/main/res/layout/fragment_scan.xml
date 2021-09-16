@@ -35,5 +35,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:text="@string/scan_title"
+        app:layout_constraintBottom_toTopOf="@id/scanner_barcode"
+        android:layout_width="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:textAlignment="center"
+        android:fontFamily="@font/open_sans_bold"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

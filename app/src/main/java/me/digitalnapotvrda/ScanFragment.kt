@@ -1,6 +1,7 @@
 package me.digitalnapotvrda
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,8 +32,9 @@ class ScanFragment : Fragment() {
     private var graphicOverlay: GraphicOverlay? = null
     private var currentWorkflowState: WorkflowModel.WorkflowState? = null
 
+    private var currentQrCode = ""
     private val toast: Toast by lazy {
-        Toast.makeText(requireContext(), "Neispravan QR kod", Toast.LENGTH_SHORT)
+        Toast.makeText(requireContext(), R.string.invalid_qr_code, Toast.LENGTH_SHORT)
     }
 
     override fun onCreateView(
@@ -82,7 +84,10 @@ class ScanFragment : Fragment() {
                     viewModel.setQrCode(it)
                     findNavController().navigate(ScanFragmentDirections.scanToQrCode())
                 } else {
-                    toast.show()
+                    if (currentQrCode != it){
+                        toast.show()
+                        currentQrCode = it
+                    }
                 }
             }
         })
@@ -111,8 +116,7 @@ class ScanFragment : Fragment() {
     }
 
     private fun checkQrCode(s: String): Boolean {
-        if (s.contains("https://www.ezdravlje.me/evakcinaverification/#!/verify")) return true
-        return false
+        return (s.contains("https://www.ezdravlje.me/evakcinaverification/#!/verify"))
     }
 
     override fun onDestroyView() {

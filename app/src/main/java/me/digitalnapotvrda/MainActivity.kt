@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_DigitalnaPotvrda)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         instantiateNavController()

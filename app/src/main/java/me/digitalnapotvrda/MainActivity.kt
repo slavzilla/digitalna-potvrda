@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
 import me.digitalnapotvrda.databinding.ActivityMainBinding
+import me.digitalnapotvrda.utils.updateNavBarColor
 
 
 @AndroidEntryPoint
@@ -45,5 +46,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         navController.graph = navGraph
+
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when (destination.id) {
+                R.id.scanFragment -> {
+                    updateNavBarColor(R.color.black, false)
+                }
+                else -> {
+                    updateNavBarColor(R.color.white, true)
+                }
+            }
+        }
     }
 }

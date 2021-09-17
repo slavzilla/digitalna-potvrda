@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
-import me.digitalnapotvrda.databinding.ActivityMainBinding
 import me.digitalnapotvrda.utils.updateNavBarColor
 
 

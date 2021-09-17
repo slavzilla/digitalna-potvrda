@@ -14,6 +14,7 @@ import com.google.zxing.EncodeHintType
 import com.google.zxing.MultiFormatWriter
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import me.digitalnapotvrda.databinding.FragmentQrCodeBinding
+import me.digitalnapotvrda.utils.showYesOrNoDialog
 import java.util.*
 
 
@@ -58,8 +59,10 @@ class QrCodeFragment : Fragment() {
             }
         }
         binding.delete.setOnClickListener {
-            viewModel.invalidateQrCode()
-            findNavController().navigate(QrCodeFragmentDirections.qrCodeToScan())
+            context?.showYesOrNoDialog(R.string.delete, {
+                viewModel.invalidateQrCode()
+                findNavController().navigate(QrCodeFragmentDirections.qrCodeToScan())
+            })
         }
     }
 

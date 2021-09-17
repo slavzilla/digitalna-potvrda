@@ -1,9 +1,12 @@
 package me.digitalnapotvrda.utils
 
+import android.app.AlertDialog
+import android.content.Context
 import android.os.Build
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import me.digitalnapotvrda.R
 
 fun AppCompatActivity.updateNavBarColor(color: Int, isLight: Boolean) {
     setNavBarColor(color)
@@ -34,4 +37,22 @@ private fun AppCompatActivity.setNavBarLightDark(isLight: Boolean) {
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
     window.decorView.systemUiVisibility = flags
 
+}
+
+fun Context.showYesOrNoDialog(
+    messageResource: Int,
+    positiveButtonListener: (() -> Unit),
+    negativeButtonListener: (() -> Unit)? = null
+) {
+    AlertDialog.Builder(this).setMessage(messageResource).setCancelable(false).setPositiveButton(
+        R.string.yes
+    ) { _, _ ->
+        positiveButtonListener()
+    }.setNegativeButton(R.string.no) { dialog, _ ->
+        if (negativeButtonListener == null) {
+            dialog.dismiss()
+        } else {
+            negativeButtonListener()
+        }
+    }.show()
 }

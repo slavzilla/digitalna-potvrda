@@ -44,6 +44,7 @@
         <item name="fontFamily">@font/open_sans_bold</item>
         <item name="android:textColor">@color/action</item>
         <item name="android:insetBottom">0dp</item>
+        <item name="textAllCaps">false</item>
         <item name="rippleColor">@color/action</item>
         <item name="backgroundTint">@color/white</item>
     </style>

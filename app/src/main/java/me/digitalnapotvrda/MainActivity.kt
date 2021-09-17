@@ -15,7 +15,6 @@ import me.digitalnapotvrda.utils.updateNavBarColor
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
     private val viewModel by viewModels<MainViewModel>()

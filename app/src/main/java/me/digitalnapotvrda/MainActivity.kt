@@ -1,13 +1,17 @@
 package me.digitalnapotvrda
 
 import android.Manifest
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
+import me.digitalnapotvrda.utils.showYesOrNoDialog
 import me.digitalnapotvrda.utils.updateNavBarColor
 
 
@@ -20,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private val permissions =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-            if (!it) finish()
+            if (!it) showSettingsDialog()
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.graph = navGraph
 
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.scanFragment -> {
                     updateNavBarColor(R.color.black, false)
@@ -55,5 +59,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun showSettingsDialog() {
+        showYesOrNoDialog(R.string.go_to_settings_message, {
+            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+            intent.data = Uri.parse("package:${this.packageName}")
+            startActivity(intent)
+        })
     }
 }

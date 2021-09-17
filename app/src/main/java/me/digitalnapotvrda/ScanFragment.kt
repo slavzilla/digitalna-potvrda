@@ -86,7 +86,7 @@ class ScanFragment : Fragment() {
                     viewModel.setQrCode(it)
                     findNavController().navigate(ScanFragmentDirections.scanToQrCode())
                 } else {
-                    if (currentQrCode != it){
+                    if (currentQrCode != it) {
                         toast.show()
                         currentQrCode = it
                     }
@@ -98,7 +98,11 @@ class ScanFragment : Fragment() {
 
     private fun startCameraPreview() {
         val cameraSource = this.cameraSource ?: return
-        if (!workflowModel.isCameraLive && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+        if (!workflowModel.isCameraLive && ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.CAMERA
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
             try {
                 workflowModel.markCameraLive()
                 binding.cameraPreview.start(cameraSource)

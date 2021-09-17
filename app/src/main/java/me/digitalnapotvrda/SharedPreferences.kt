@@ -6,7 +6,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SharedPreferences @Inject constructor(@ApplicationContext context: Context)  {
+class SharedPreferences @Inject constructor(@ApplicationContext context: Context) {
 
     companion object {
         private const val PREF_FILENAME = "me.digitalnapotvrda"

@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @HiltAndroidApp
-class MyApplication: Application() {
+class MyApplication : Application() {
 
     private val applicationScope = CoroutineScope(Dispatchers.Default)
 

@@ -62,10 +62,20 @@ abstract class FrameProcessorBase<T> : FrameProcessor {
         detectInImage(image)
             .addOnSuccessListener(executor) { results: T ->
                 Timber.d("Latency is: ${SystemClock.elapsedRealtime() - startMs}")
-                this@FrameProcessorBase.onSuccess(CameraInputInfo(frame, frameMetaData), results, graphicOverlay)
+                this@FrameProcessorBase.onSuccess(
+                    CameraInputInfo(frame, frameMetaData),
+                    results,
+                    graphicOverlay
+                )
                 processLatestFrame(graphicOverlay)
             }
-            .addOnFailureListener(executor) { e -> OnFailureListener { this@FrameProcessorBase.onFailure(it) } }
+            .addOnFailureListener(executor) { e ->
+                OnFailureListener {
+                    this@FrameProcessorBase.onFailure(
+                        it
+                    )
+                }
+            }
     }
 
     override fun stop() {

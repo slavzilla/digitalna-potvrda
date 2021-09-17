@@ -56,27 +56,27 @@
     </com.google.android.material.card.MaterialCardView>
 
     <Button
-        style="@style/SecondaryButton"
         android:id="@+id/delete_button"
+        style="@style/SecondaryButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:text="@string/delete_button"
-        app:icon="@drawable/ic_delete"
         android:layout_marginHorizontal="40dp"
         android:layout_marginBottom="32dp"
+        android:text="@string/delete_button"
+        app:icon="@drawable/ic_delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        style="@style/PrimaryButton"
         android:id="@+id/more_info_button"
+        style="@style/PrimaryButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        app:icon="@drawable/ic_open"
-        android:text="@string/open_button"
         android:layout_marginHorizontal="40dp"
         android:layout_marginBottom="16dp"
+        android:text="@string/open_button"
+        app:icon="@drawable/ic_open"
         app:layout_constraintBottom_toTopOf="@id/delete_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

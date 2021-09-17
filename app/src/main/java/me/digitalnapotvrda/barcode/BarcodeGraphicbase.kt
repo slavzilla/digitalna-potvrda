@@ -1,6 +1,8 @@
 package me.digitalnapotvrda.barcode
 
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.RectF
 import androidx.core.content.ContextCompat
 import me.digitalnapotvrda.R
 import me.digitalnapotvrda.camera.GraphicOverlay

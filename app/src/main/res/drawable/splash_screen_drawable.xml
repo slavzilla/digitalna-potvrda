@@ -2,9 +2,12 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item>
-        <color android:color="@color/white"/>
+        <color android:color="@color/white" />
     </item>
 
-    <item android:drawable="@drawable/ic_launcher_foreground"
-        android:gravity="center" android:width="350dp" android:height="350dp"/>
+    <item
+        android:width="350dp"
+        android:height="350dp"
+        android:drawable="@drawable/ic_launcher_foreground"
+        android:gravity="center" />
 </layer-list>

@@ -14,7 +14,7 @@ import com.google.android.gms.common.images.Size
 import timber.log.Timber
 import java.io.IOException
 import java.nio.ByteBuffer
-import java.util.IdentityHashMap
+import java.util.*
 import kotlin.math.abs
 import kotlin.math.ceil
 
@@ -149,7 +149,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
         }
     }
 
-    private fun  hasFlash(): Boolean {
+    private fun hasFlash(): Boolean {
         if (camera == null) {
             return false
         }
@@ -284,7 +284,8 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
      */
     private fun createPreviewBuffer(previewSize: Size): ByteArray {
         val bitsPerPixel = ImageFormat.getBitsPerPixel(IMAGE_FORMAT)
-        val sizeInBits = previewSize.height.toLong() * previewSize.width.toLong() * bitsPerPixel.toLong()
+        val sizeInBits =
+            previewSize.height.toLong() * previewSize.width.toLong() * bitsPerPixel.toLong()
         val bufferSize = ceil(sizeInBits / 8.0).toInt() + 1
 
         // Creating the byte array this way and wrapping it, as opposed to using .allocate(),
@@ -322,7 +323,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
         private var pendingFrameData: ByteBuffer? = null
 
         /** Marks the runnable as active/not active. Signals any blocked threads to continue.  */
-         fun setActive(active: Boolean) {
+        fun setActive(active: Boolean) {
             synchronized(lock) {
                 this.active = active
                 lock.notifyAll()
@@ -333,7 +334,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
          * Sets the frame data received from the camera. This adds the previous unused frame buffer (if
          * present) back to the camera, and keeps a pending reference to the frame data for future use.
          */
-         fun setNextFrame(data: ByteArray, camera: Camera) {
+        fun setNextFrame(data: ByteArray, camera: Camera) {
             synchronized(lock) {
                 pendingFrameData?.let {
                     camera.addCallbackBuffer(it.array())
@@ -401,7 +402,11 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
                 try {
                     synchronized(processorLock) {
-                        val frameMetadata = FrameMetadata(previewSize!!.width, previewSize!!.height, rotationDegrees)
+                        val frameMetadata = FrameMetadata(
+                            previewSize!!.width,
+                            previewSize!!.height,
+                            rotationDegrees
+                        )
                         data?.let {
                             frameProcessor?.process(it, frameMetadata, graphicOverlay)
                         }
@@ -450,7 +455,10 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
          * @param camera the camera to select a preview size from
          * @return the selected preview and picture size pair
          */
-        private fun selectSizePair(camera: Camera, displayAspectRatioInLandscape: Float): CameraSizePair? {
+        private fun selectSizePair(
+            camera: Camera,
+            displayAspectRatioInLandscape: Float
+        ): CameraSizePair? {
             val validPreviewSizes = Utils.generateValidPreviewSizeList(camera)
 
             var selectedPair: CameraSizePair? = null

@@ -1,8 +1,8 @@
 package me.digitalnapotvrda.barcode
 
 import android.graphics.Bitmap
-import me.digitalnapotvrda.camera.Utils
 import me.digitalnapotvrda.camera.FrameMetadata
+import me.digitalnapotvrda.camera.Utils
 import java.nio.ByteBuffer
 
 interface InputInfo {

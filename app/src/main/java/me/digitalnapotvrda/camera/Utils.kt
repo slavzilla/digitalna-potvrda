@@ -18,7 +18,7 @@ import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.InputStream
 import java.nio.ByteBuffer
-import java.util.ArrayList
+import java.util.*
 import kotlin.math.abs
 
 object Utils {
@@ -53,7 +53,10 @@ object Utils {
 
     private fun getRequiredPermissions(context: Context): Array<String> {
         return try {
-            val info = context.packageManager.getPackageInfo(context.packageName, PackageManager.GET_PERMISSIONS)
+            val info = context.packageManager.getPackageInfo(
+                context.packageName,
+                PackageManager.GET_PERMISSIONS
+            )
             val ps = info.requestedPermissions
             if (ps != null && ps.isNotEmpty()) ps else arrayOf()
         } catch (e: Exception) {
@@ -110,7 +113,8 @@ object Utils {
     }
 
     fun getCornerRoundedBitmap(srcBitmap: Bitmap, cornerRadius: Int): Bitmap {
-        val dstBitmap = Bitmap.createBitmap(srcBitmap.width, srcBitmap.height, Bitmap.Config.ARGB_8888)
+        val dstBitmap =
+            Bitmap.createBitmap(srcBitmap.width, srcBitmap.height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(dstBitmap)
         val paint = Paint()
         paint.isAntiAlias = true
@@ -140,7 +144,7 @@ object Utils {
             matrix.postRotate(rotationDegrees.toFloat())
             return Bitmap.createBitmap(bmp, 0, 0, bmp.width, bmp.height, matrix, true)
         } catch (e: java.lang.Exception) {
-            Timber.e("Error: ${e.message}" )
+            Timber.e("Error: ${e.message}")
         }
         return null
     }
@@ -161,12 +165,14 @@ object Utils {
             var opts = BitmapFactory.Options()
             opts.inJustDecodeBounds = true
             BitmapFactory.decodeStream(inputStreamForSize, null, opts)/* outPadding= */
-            val inSampleSize = Math.max(opts.outWidth / maxImageDimension, opts.outHeight / maxImageDimension)
+            val inSampleSize =
+                Math.max(opts.outWidth / maxImageDimension, opts.outHeight / maxImageDimension)
 
             opts = BitmapFactory.Options()
             opts.inSampleSize = inSampleSize
             inputStreamForImage = context.contentResolver.openInputStream(imageUri)
-            val decodedBitmap = BitmapFactory.decodeStream(inputStreamForImage, null, opts)/* outPadding= */
+            val decodedBitmap =
+                BitmapFactory.decodeStream(inputStreamForImage, null, opts)/* outPadding= */
             return maybeTransformBitmap(
                 context.contentResolver,
                 imageUri,
@@ -178,7 +184,11 @@ object Utils {
         }
     }
 
-    private fun maybeTransformBitmap(resolver: ContentResolver, uri: Uri, bitmap: Bitmap?): Bitmap? {
+    private fun maybeTransformBitmap(
+        resolver: ContentResolver,
+        uri: Uri,
+        bitmap: Bitmap?
+    ): Bitmap? {
         val matrix: Matrix? = when (getExifOrientationTag(resolver, uri)) {
             ExifInterface.ORIENTATION_UNDEFINED, ExifInterface.ORIENTATION_NORMAL ->
                 // Set the matrix to be null to skip the image transform.
@@ -213,7 +223,8 @@ object Utils {
 
         var exif: ExifInterface? = null
         try {
-            resolver.openInputStream(imageUri)?.use { inputStream -> exif = ExifInterface(inputStream) }
+            resolver.openInputStream(imageUri)
+                ?.use { inputStream -> exif = ExifInterface(inputStream) }
         } catch (e: IOException) {
             Timber.e("Failed to open file to read rotation meta data: $imageUri | exception is $e")
         }

@@ -17,7 +17,7 @@ class BarcodeGraphicRectangle(context: Context, attrs: AttributeSet) : View(cont
     }
 
     private val linePaint: Paint = Paint().apply {
-        color = ContextCompat.getColor(context, R.color.red)
+        color = ContextCompat.getColor(context, R.color.action)
         isAntiAlias = true
         strokeWidth = 2 * context.resources.displayMetrics.density
         style = Paint.Style.STROKE

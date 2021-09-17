@@ -14,6 +14,7 @@ import com.google.zxing.EncodeHintType
 import com.google.zxing.MultiFormatWriter
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import me.digitalnapotvrda.databinding.FragmentQrCodeBinding
+import me.digitalnapotvrda.utils.dp2px
 import me.digitalnapotvrda.utils.showYesOrNoDialog
 import java.util.*
 
@@ -35,10 +36,10 @@ class QrCodeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val qrCode = viewModel.getQrCode()
         binding.qrCode.apply {
-            val qrCode = viewModel.getQrCode()
             val multiFormatWriter = MultiFormatWriter()
-            val width = resources.displayMetrics.widthPixels
+            val width = context.dp2px(216f)
             try {
                 val hintMap: MutableMap<EncodeHintType, Any?> =
                     EnumMap(EncodeHintType::class.java)
@@ -54,15 +55,15 @@ class QrCodeFragment : Fragment() {
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-            setOnClickListener {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(qrCode)))
-            }
         }
-        binding.delete.setOnClickListener {
+        binding.deleteButton.setOnClickListener {
             context?.showYesOrNoDialog(R.string.delete, {
                 viewModel.invalidateQrCode()
                 findNavController().navigate(QrCodeFragmentDirections.qrCodeToScan())
             })
+        }
+        binding.moreInfoButton.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(qrCode)))
         }
     }
 

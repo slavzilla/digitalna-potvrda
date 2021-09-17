@@ -56,3 +56,8 @@ fun Context.showYesOrNoDialog(
         }
     }.show()
 }
+
+fun Context.dp2px(dp: Float): Int {
+    val scale = this.resources.displayMetrics.density
+    return (dp * scale + 0.5f).toInt()
+}

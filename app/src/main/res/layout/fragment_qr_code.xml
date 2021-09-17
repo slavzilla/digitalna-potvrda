@@ -3,28 +3,82 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:ignore="ContentDescription"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:ignore="ContentDescription">
 
-    <ImageView
-        android:id="@+id/qr_code"
+    <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="W,1:1"
+        android:background="@color/action"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/delete"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_delete"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <TextView
+        android:id="@+id/qr_code_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="@string/qr_code_title"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/card"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="12dp"
+        app:contentPadding="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/qr_code"
-        app:tint="@color/black"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toTopOf="@id/guideline">
+
+        <ImageView
+            android:id="@+id/qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        style="@style/SecondaryButton"
+        android:id="@+id/delete_button"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="Uklonite potvrdu"
+        app:icon="@drawable/ic_delete"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        style="@style/PrimaryButton"
+        android:id="@+id/more_info_button"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        app:icon="@drawable/ic_open"
+        android:text="Idite na eZdravlje"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/delete_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

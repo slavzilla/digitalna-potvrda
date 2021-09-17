@@ -1,5 +1,7 @@
 package me.digitalnapotvrda
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,6 +52,9 @@ class QrCodeFragment : Fragment() {
                 visibility = View.VISIBLE
             } catch (e: Exception) {
                 e.printStackTrace()
+            }
+            setOnClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(qrCode)))
             }
         }
         binding.delete.setOnClickListener {

@@ -9,4 +9,5 @@
     <string name="qr_code_title">QR kod Vaše potvrde</string>
     <string name="open_button">IDITE NA eZDRAVLJE</string>
     <string name="delete_button">Uklonite potvrdu</string>
+    <string name="pdf_button">Učitajte pdf potvrde</string>
 </resources>

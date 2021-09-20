@@ -2,6 +2,7 @@
     <string name="app_name">Digitalna Potvrda</string>
     <string name="scan_title">Skenirajte QR kod sa Vaše potvrde</string>
     <string name="invalid_qr_code">Neispravan QR kod</string>
+    <string name="invalid_file">Neispravan fajl</string>
     <string name="yes">Da</string>
     <string name="no">Ne</string>
     <string name="delete">Da li ste sigurni da želite ukloniti potvrdu?</string>

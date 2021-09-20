@@ -74,7 +74,6 @@ class ScanFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentScanBinding.inflate(inflater, container, false)
-        _binding = FragmentScanBinding.inflate(inflater, container, false)
         return binding.root
     }
 

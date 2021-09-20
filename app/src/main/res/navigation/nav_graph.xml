@@ -34,5 +34,17 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/qrCodeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/qr_code_to_pdf"
+            app:destination="@id/pdfFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+    <fragment
+        android:id="@+id/pdfFragment"
+        tools:layout="@layout/fragment_pdf"
+        android:name="me.digitalnapotvrda.PdfFragment"
+        android:label="PdfFragment" />
 </navigation>

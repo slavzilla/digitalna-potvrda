@@ -65,6 +65,11 @@ class QrCodeFragment : Fragment() {
         binding.moreInfoButton.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(qrCode)))
         }
+        if (viewModel.getBitmap() != null) {
+            binding.qrCode.setOnClickListener {
+                findNavController().navigate(QrCodeFragmentDirections.qrCodeToPdf())
+            }
+        }
     }
 
     override fun onDestroyView() {

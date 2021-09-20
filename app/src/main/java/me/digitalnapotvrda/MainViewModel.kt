@@ -19,6 +19,7 @@ class MainViewModel @Inject constructor(private val prefs: SharedPreferences) : 
 
     fun invalidateQrCode() {
         prefs.qrCode = null
+        prefs.image = null
     }
 
     fun getQrCode(): String? {

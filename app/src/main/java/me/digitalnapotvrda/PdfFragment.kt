@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import me.digitalnapotvrda.databinding.FragmentPdfBinding
 
 class PdfFragment : Fragment() {
@@ -28,6 +29,9 @@ class PdfFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getBitmap()?.let {
             binding.pdfImage.setImageBitmap(it)
+        }
+        binding.backButton.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 

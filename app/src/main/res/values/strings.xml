@@ -9,6 +9,6 @@
     <string name="go_to_settings_message">Molimo Vas da odobrite pristup kameri</string>
     <string name="qr_code_title">QR kod Vaše potvrde</string>
     <string name="open_button">IDITE NA eZDRAVLJE</string>
-    <string name="delete_button">Uklonite potvrdu</string>
+    <string name="see_pdf_button">Pogledajte pdf</string>
     <string name="pdf_button">Učitajte pdf potvrde</string>
 </resources>

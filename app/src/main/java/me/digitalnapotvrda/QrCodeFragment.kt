@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -65,8 +66,10 @@ class QrCodeFragment : Fragment() {
         binding.moreInfoButton.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(qrCode)))
         }
-        if (viewModel.getBitmap() != null) {
-            binding.qrCode.setOnClickListener {
+        val bitmap = viewModel.getBitmap()
+        binding.pdfButton.isVisible = bitmap != null
+        if (bitmap != null) {
+            binding.pdfButton.setOnClickListener {
                 findNavController().navigate(QrCodeFragmentDirections.qrCodeToPdf())
             }
         }

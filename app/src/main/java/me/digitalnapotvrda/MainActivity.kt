@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
+import me.digitalnapotvrda.utils.setStatusBarColor
 import me.digitalnapotvrda.utils.showYesOrNoDialog
 import me.digitalnapotvrda.utils.updateNavBarColor
 
@@ -53,9 +54,15 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.scanFragment -> {
                     updateNavBarColor(R.color.black, false)
+                    setStatusBarColor(R.color.black, false)
+                }
+                R.id.qrCodeFragment -> {
+                    updateNavBarColor(R.color.white, true)
+                    setStatusBarColor(R.color.action, true)
                 }
                 else -> {
                     updateNavBarColor(R.color.white, true)
+                    setStatusBarColor(R.color.white, true)
                 }
             }
         }

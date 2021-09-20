@@ -8,6 +8,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import me.digitalnapotvrda.R
 
+
 fun AppCompatActivity.updateNavBarColor(color: Int, isLight: Boolean) {
     setNavBarColor(color)
     setNavBarLightDark(isLight)
@@ -36,6 +37,21 @@ private fun AppCompatActivity.setNavBarLightDark(isLight: Boolean) {
     }
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
     window.decorView.systemUiVisibility = flags
+
+}
+
+fun AppCompatActivity.setStatusBarColor(color: Int, lightStatusBar: Boolean) {
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    window.statusBarColor = getColor(color)
+    updateStatusBarTheme(lightStatusBar)
+}
+
+@Suppress("DEPRECATION")
+private fun AppCompatActivity.updateStatusBarTheme(lightStatusBar: Boolean) {
+    val flags = window.decorView.systemUiVisibility
+    if (lightStatusBar) window.decorView.systemUiVisibility = flags or
+            View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR else window.decorView.systemUiVisibility =
+        flags and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
 
 }
 

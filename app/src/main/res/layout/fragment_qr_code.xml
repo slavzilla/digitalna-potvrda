@@ -28,7 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
+        android:ellipsize="end"
         android:fontFamily="@font/open_sans_bold"
+        android:maxLines="1"
         android:text="@string/qr_code_title"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -94,7 +96,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

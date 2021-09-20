@@ -49,6 +49,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="@string/or"
+        android:textColor="@color/action"
+        app:layout_constraintBottom_toTopOf="@id/pdf_button"
+        app:layout_constraintEnd_toEndOf="@id/pdf_button"
+        app:layout_constraintStart_toStartOf="@id/pdf_button" />
+
     <Button
         android:id="@+id/pdf_button"
         style="@style/TertiaryButton"
@@ -86,9 +98,9 @@
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/progress_group"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:constraint_referenced_ids="progress,dim" />
 
 

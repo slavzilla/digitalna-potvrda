@@ -102,8 +102,6 @@ class ScanFragment : Fragment() {
     }
 
     private fun setUpWorkflowModel() {
-        // Observes the workflow state changes, if happens, update the overlay view indicators and
-        // camera preview state.
         workflowModel.workflowState.observe(viewLifecycleOwner, Observer { workflowState ->
             if (workflowState == null || Objects.equal(currentWorkflowState, workflowState)) {
                 return@Observer
@@ -204,7 +202,6 @@ class ScanFragment : Fragment() {
                 try {
                     inputStream?.close()
                 } catch (e: IOException) {
-                    // do nothing because the stream has already been closed
                 }
             }
             bi?.let {
